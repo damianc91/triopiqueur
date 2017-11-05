@@ -226,3 +226,13 @@ width: 100%;
 .container-cart{
   display: flex;
 }
+
+.form-delivery label{
+  width: 100%;
+}
+.form-delivery fieldset{
+  padding: 10px 20px;
+}
+.form-delivery input{
+  margin-bottom: 10px;
+}
