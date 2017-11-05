@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
+
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 		<!-- <style type="text/css">@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/26c4cd/00000000000000003b9ad1b1/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.net/af/26c4cd/00000000000000003b9ad1b1/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.net/af/26c4cd/00000000000000003b9ad1b1/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/d76e9c/00000000000000003b9ad1b2/27/l?subset_id=2&fvd=i7&v=3) format("woff2"),url(https://use.typekit.net/af/d76e9c/00000000000000003b9ad1b2/27/d?subset_id=2&fvd=i7&v=3) format("woff"),url(https://use.typekit.net/af/d76e9c/00000000000000003b9ad1b2/27/a?subset_id=2&fvd=i7&v=3) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/0b34b4/00000000000000003b9ad1bd/27/l?subset_id=2&fvd=n1&v=3) format("woff2"),url(https://use.typekit.net/af/0b34b4/00000000000000003b9ad1bd/27/d?subset_id=2&fvd=n1&v=3) format("woff"),url(https://use.typekit.net/af/0b34b4/00000000000000003b9ad1bd/27/a?subset_id=2&fvd=n1&v=3) format("opentype");font-weight:100;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/2077d0/00000000000000003b9ad1be/27/l?subset_id=2&fvd=i1&v=3) format("woff2"),url(https://use.typekit.net/af/2077d0/00000000000000003b9ad1be/27/d?subset_id=2&fvd=i1&v=3) format("woff"),url(https://use.typekit.net/af/2077d0/00000000000000003b9ad1be/27/a?subset_id=2&fvd=i1&v=3) format("opentype");font-weight:100;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/610d30/00000000000000003b9ad1bb/27/l?subset_id=2&fvd=n6&v=3) format("woff2"),url(https://use.typekit.net/af/610d30/00000000000000003b9ad1bb/27/d?subset_id=2&fvd=n6&v=3) format("woff"),url(https://use.typekit.net/af/610d30/00000000000000003b9ad1bb/27/a?subset_id=2&fvd=n6&v=3) format("opentype");font-weight:600;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/c9789d/00000000000000003b9ad1bc/27/l?subset_id=2&fvd=i6&v=3) format("woff2"),url(https://use.typekit.net/af/c9789d/00000000000000003b9ad1bc/27/d?subset_id=2&fvd=i6&v=3) format("woff"),url(https://use.typekit.net/af/c9789d/00000000000000003b9ad1bc/27/a?subset_id=2&fvd=i6&v=3) format("opentype");font-weight:600;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/1f8eae/00000000000000003b9ad1b9/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/1f8eae/00000000000000003b9ad1b9/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/1f8eae/00000000000000003b9ad1b9/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/ca838d/00000000000000003b9ad1ba/27/l?subset_id=2&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/ca838d/00000000000000003b9ad1ba/27/d?subset_id=2&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/ca838d/00000000000000003b9ad1ba/27/a?subset_id=2&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/c2fb26/00000000000000003b9ad1b5/27/l?subset_id=2&fvd=n3&v=3) format("woff2"),url(https://use.typekit.net/af/c2fb26/00000000000000003b9ad1b5/27/d?subset_id=2&fvd=n3&v=3) format("woff"),url(https://use.typekit.net/af/c2fb26/00000000000000003b9ad1b5/27/a?subset_id=2&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/85cfc9/00000000000000003b9ad1b6/27/l?subset_id=2&fvd=i3&v=3) format("woff2"),url(https://use.typekit.net/af/85cfc9/00000000000000003b9ad1b6/27/d?subset_id=2&fvd=i3&v=3) format("woff"),url(https://use.typekit.net/af/85cfc9/00000000000000003b9ad1b6/27/a?subset_id=2&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;}
@@ -8,10 +9,11 @@
 
 
 </head>
-<body>
+<body style="background-color:white">
+
 	<div id="content-checkout">
 		<div class="page checkout unbordered-checkout fill">
-			<div class="container_wrapper" style="background-color: rgb(223, 223, 223);">
+			<div class="container_wrapper" style="background-color: rgb(255, 255, 255);">
 				<div class="container container-standard">
 					<div class="sidebar">
 						<div class="container-transaction">
@@ -64,7 +66,6 @@
 								<div class="input-row">
 									<div class="form-control" style="flex-grow: 1.2"  >
 										<span class="form-section-label" >Date d'expiration</span>
-										<span class="form-section-label"><br/></span>
 										<select >
 										<option value="mois" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mois</option>
 										<option value="mois01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;01</option>
