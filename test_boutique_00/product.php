@@ -52,7 +52,7 @@
             <p>Disponible</p>
           </div>
           <div class="btn-acheter">
-            <button type="button">Acheter</button>
+            <button type="button">Ajouter au panier</button>
           </div>
 
         </div>

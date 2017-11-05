@@ -218,6 +218,11 @@ body {
   border-radius: 0.25rem;
 }
 
+
+.total-panier p{
+width: 100%;
+  text-align: right;
+}
 .container-cart{
   display: flex;
 }

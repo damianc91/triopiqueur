@@ -53,10 +53,12 @@
         </div> <!-- fin liste panier -->
 
         <div class="total-panier">
-            <h2>Total </h2>
+            <h3>Frais de livraison : </h3>
+            <p>OFFERT</p>
+            <h3>Total </h3>
             <p>900€</p>
             <div class="btn-acheter">
-                <button type="button">Commander</button>
+                <a href="delivery.php"><button type="button">Commander</button></a>
             </div>
 
         </div>
