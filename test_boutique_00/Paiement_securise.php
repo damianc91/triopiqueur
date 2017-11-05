@@ -67,7 +67,6 @@
 								<div class="input-row">
 									<div class="form-control" style="flex-grow: 1.2"  >
 										<span class="form-section-label" >Date d'expiration</span>
-										<span class="form-section-label"><br/></span>
 										<select >
 										<option value="mois" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mois</option>
 										<option value="mois01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;01</option>
