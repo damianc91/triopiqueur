@@ -14,7 +14,7 @@ body {
   }
 }
 .submit-srch{
-  padding:8px;
+  padding:9px;
   height: 30px;
   width: 30px;
   background-image: url(../images/search.png);
@@ -145,6 +145,9 @@ body {
 .product-description{
   padding-top: 40px;
 }
+.product-description ul {
+  list-style-type: none;
+}
 
 .btn-acheter button:hover {
   background-color: #e3e3e3;
@@ -172,7 +175,7 @@ body {
   max-width: 200px;
   height: 30px;
 }
-@media (min width: 300px){
+@media (min-width: 300px){
   .search-zone{
     width:auto;
   }
