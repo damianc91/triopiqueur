@@ -158,7 +158,7 @@ body{background:#dfdfdf}
 .merchant-logo{max-height:70px}
 .form-section,.uneditable-form-section{padding:1.5em 1.5625em 1.375em 1.5625em}
 .form-section:last-child,.uneditable-form-section:last-child{border-bottom:0}
-.button-link,.form-section-label{margin-bottom:.69231em;color:#9c9c9c;font-weight:600;font-size:.8125em;text-transform:uppercase}
+.button-link,.form-section-label{margin-bottom:.69231em;color:#9c9c9c;font-weight:600;font-size:.8125em;text-transform:uppercase ;}
 .uneditable-form-section{padding-top:1.5em;padding-bottom:1em;line-height:1em}
 .uneditable-form-section h3{margin-bottom:1.3em}
 .uneditable-form-section p{font-size:1em;margin:.6em auto}
@@ -253,8 +253,8 @@ body{background:#dfdfdf}
 .container-standard .sidebar .separator{padding:30px 0}
 .container-standard .sidebar .separator:before{position:absolute;content:'';height:1px;width:170px;background:#dfdfdf}
 .container-standard .icon-shop{background:url(/static/default/images/template/icon-shop.svg) no-repeat}
-.container-standard .icon-amount{background:url(/static/default/images/template/icon-amount.svg) no-repeat}
-.container-standard .icon-transaction{background:url(/static/default/images/template/icon-transaction.svg) no-repeat}}
+.container-standard .icon-amount{background:url("./icon-montant-commande.png") no-repeat}
+.container-standard .icon-transaction{background:url("./icon_transaction.PNG") no-repeat}}
 @media screen and (max-width:750px){.sidebar{display:none!important}
 .checkout .container{padding:0}
 .container-standard{max-width:none}
@@ -275,4 +275,11 @@ body{background:#dfdfdf}
 .container-standard .panel-footer .container-secure .secure-logo img:first-child{margin-right:20px}}
 .tipsy .tipsy-inner{background-color:#fff!important;color:#b7b5b5!important;box-shadow:0 3px 15px #b7b5b5;padding:14px 10px;border-radius:5px}
 .tipsy .tipsy-arrow{border-top-color:#fff}
+#input_img {
+    position:absolute;
+    bottom:5px;
+    left:5px;
+    width:32px;
+    height:32px;
+
 
