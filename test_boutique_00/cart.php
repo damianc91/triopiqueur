@@ -58,7 +58,7 @@
             <h3>Total </h3>
             <p>900€</p>
             <div class="btn-acheter">
-                <a href="delivery.php"><button type="button">Commander</button></a>
+                <a href="delivery_form.php"><button type="button">Commander</button></a>
             </div>
 
         </div>
