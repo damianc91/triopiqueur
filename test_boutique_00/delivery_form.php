@@ -14,7 +14,7 @@
         <div class="col-md-3 inputGroupContainer">
         <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+        <input  name="first_name" placeholder="Prénom" class="form-control"  type="text">
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <div class="col-md-3 inputGroupContainer">
           <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+        <input name="last_name" placeholder="Nom" class="form-control"  type="text">
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
       <!-- Text input-->
 
       <div class="form-group">
-        <label class="col-md-3 control-label">N° de téléphone</label>
+        <label class="control-label label-form" id="label-form" style="margin-left:15px;">N° de téléphone</label>
           <div class="col-md-3 inputGroupContainer">
           <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
