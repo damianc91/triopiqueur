@@ -1,0 +1,26 @@
+form{
+}
+
+fieldset{
+  display: inline-block;
+  margin-top: 30px
+}
+
+
+
+
+.info-clt{
+  width:49%;
+}
+.adresse{
+  width:49%;
+  display:inline-block;
+}
+.inputGroupContainer{
+  max-width: 86%;
+  width:90%;
+}
+.total-panier{
+  display:inline-block;
+  margin-top: 10%;
+  vertical-align: top;

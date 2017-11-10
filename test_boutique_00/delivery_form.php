@@ -5,6 +5,9 @@
 <?php include('header.php'); ?>
 <link href="./delivery_form/delivery_form.css" rel="stylesheet">
 <div class="container">
+  <div class="product-display">
+
+
     <form class="form" action="./recap.php" method="post"  id="delivery_form">
   <!-- Text input-->
     <fieldset class="info-clt">
@@ -139,6 +142,7 @@
       </div>
     </div>
     </form>
+  </div>
   </div>
     <?php include('footer.php'); ?>
 
