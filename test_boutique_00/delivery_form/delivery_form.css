@@ -8,18 +8,16 @@ fieldset{
 
 
 
-.container{
-  margin-left:25%;
-}
+
 .info-clt{
-  width:33%;
+  width:49%;
 }
 .adresse{
-  width:33%;
+  width:49%;
   display:inline-block;
 }
 .inputGroupContainer{
-  max-width: 80%;
+  max-width: 86%;
   width:90%;
 }
 .total-panier{
