@@ -1,0 +1,321 @@
+﻿<Page x:Class="WpfApp1.Pages.PageCoureurs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      Title="PageCoureurs"
+      SizeChanged="updateSize">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}" x:Key="MyHeaderStyle">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="#FFC8CBCC" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </Page.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{Binding Lvcoureurs}" Name="Lvcoureurs" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" SelectionChanged="SelectRow">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView Selector.IsSelected="False">
+                    <GridViewColumn Header="NOM" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock Name="date" Text="{Binding nom}" Foreground="{Binding monEquipe}" FontSize="11" VerticalAlignment="Center"/>
+                                    <Image Name="medaille1" Source="{Binding medaille1}"  Width="{Binding lenghtMedaille1}"  VerticalAlignment="Center"/>
+                                    <Image Name="medaille2" Source="{Binding medaille2}"  Width="{Binding lenghtMedaille2}" VerticalAlignment="Center"/>
+                                    <Image Source="{Binding champNat}"  Width="{Binding lenghtChampNat}" VerticalAlignment="Center"/>
+                                    <Image Name="aVendre" Source="{Binding aVendre}"  Width="25" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="PAYS" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <Image Source="{Binding pays}"  Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="AGE" HeaderContainerStyle="{StaticResource MyHeaderStyle}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding age}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                        <TextBlock.Background>
+                                            <ImageBrush  ImageSource="{Binding couleurCarte}"/>
+                                        </TextBlock.Background>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="NIV/POT"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <materialDesign:PackIcon Kind="{Binding star1}" Grid.Column="0"  Width="25" Height="25" >
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star1Hidden}" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                    <materialDesign:PackIcon Kind="{Binding star2}" Grid.Column="1"  Width="25" Height="25"  >
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star2Hidden}" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                    <materialDesign:PackIcon Kind="{Binding star3}" Grid.Column="2"  Width="25" Height="25">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star3Hidden}" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                    <materialDesign:PackIcon Kind="{Binding star4}" Grid.Column="3"  Width="25" Height="25" >
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star4Hidden}" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                    <materialDesign:PackIcon Kind="{Binding star5}"  Grid.Column="4"  Width="25" Height="25">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star5Hidden}" Grid.Column="4"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="PLA" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding plaRound}" ToolTip="{Binding pla}" Foreground="{Binding plaColor}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="MON"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding monRound}" ToolTip="{Binding mon}" Foreground="{Binding monColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="DES" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding desRound}" ToolTip="{Binding des}" Foreground="{Binding desColor}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="VAL"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding valRound}" ToolTip="{Binding val}" Foreground="{Binding valColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="PAV"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding pavRound}" ToolTip="{Binding pav}" Foreground="{Binding pavColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="AGI"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding agiRound}" ToolTip="{Binding agi}" Foreground="{Binding agiColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="CLM" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding clmRound}"  ToolTip="{Binding clm}" Foreground="{Binding clmColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="SPR"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding sprRound}"  ToolTip="{Binding spr}" Foreground="{Binding sprColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="END"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center" >
+                                    <TextBlock Text="{Binding endRound}" ToolTip="{Binding end}" Foreground="{Binding endColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="RES"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding resRound}" ToolTip="{Binding res}" Foreground="{Binding resColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="FORME"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <!--this gauge is rotated 90° and has an clockwise fill-->
+                                    <lvc:Gauge Uses360Mode="True" From="0" To="100" Value="{Binding form}" GaugeActiveFill="{Binding formColor}" Foreground="{x:Null}" VerticalAlignment="Center" MinWidth="0" MinHeight="0" Width="15" Height="15" >
+                                        <lvc:Gauge.GaugeRenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="90"></RotateTransform>
+                                            </TransformGroup>
+                                        </lvc:Gauge.GaugeRenderTransform>
+                                    </lvc:Gauge>
+                                    <TextBlock Text="{Binding formRounded}" ToolTip="{Binding form}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="SANTE"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <!--this gauge is rotated 90° and has an clockwise fill-->
+                                    <lvc:Gauge Uses360Mode="True" From="0" To="100" Value="{Binding sante}"  GaugeActiveFill="{Binding santeColor}" Foreground="{x:Null}"  HorizontalAlignment="Stretch" VerticalAlignment="Center" MinWidth="0" MinHeight="0" Height="15" Width="15">
+                                        <lvc:Gauge.GaugeRenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="90"></RotateTransform>
+                                            </TransformGroup>
+                                        </lvc:Gauge.GaugeRenderTransform>
+                                    </lvc:Gauge>
+                                    <TextBlock Text="{Binding santeRounded}" ToolTip="{Binding sante}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="UCV"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding ucv}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

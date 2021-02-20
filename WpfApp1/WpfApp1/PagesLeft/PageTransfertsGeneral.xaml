@@ -1,0 +1,35 @@
+﻿<Page x:Class="WpfApp1.Pages.PageTransfertsGeneral"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages"
+      mc:Ignorable="d" 
+      Title="PageTransfertsGeneral">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="0.25*" />
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button Background="#FF929BA7" Click="btnMarket" BorderBrush="{x:Null}">
+                    <Label Content="Market" Foreground="White"/>
+                </Button>
+                <Button Background="#FF929BA7" Click="btnDaily" BorderBrush="{x:Null}">
+                    <Label Content="Daily transferts" Foreground="White"/>
+                </Button>
+                <Button Background="#FF929BA7" Click="btnJuniors" BorderBrush="{x:Null}">
+                    <Label Content="Juniors" Foreground="White"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Frame NavigationUIVisibility="Hidden" x:Name="frameBottom"/>
+        </Grid>
+    </Grid>
+</Page>

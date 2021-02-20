@@ -1,0 +1,1747 @@
+﻿<Page x:Class="WpfApp1.Pages.PageTransferts"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages" 
+      Title="PageTransferts"
+      SizeChanged="updateSize">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}" x:Key="MyHeaderStyle">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Foreground" Value="#FFC8CBCC" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style TargetType="{x:Type ComboBoxItem}" x:Key="MyComboBoxStyle">
+            <Setter Property="Background" Value="#FFD68712" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="#FFD68712" />
+            <Setter Property="BorderBrush" Value="#FFD68712" />
+        </Style>
+    </Page.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Row="0" Grid.ColumnSpan="3" ItemsSource="{Binding Lvtransferts}" Name="Lvtransferts" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" SelectionChanged="SelectRow">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView Selector.IsSelected="False">
+                    <GridViewColumn Header="NOM" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25">
+                                    <TextBlock Name="date" Text="{Binding nom}" Foreground="{Binding monEquipe}" FontSize="11" VerticalAlignment="Center"/>
+                                    <Image Source="{Binding medaille1}"  Width="{Binding medaille1Lenght}"  VerticalAlignment="Center"/>
+                                    <Image Source="{Binding medaille2}"  Width="{Binding medaille2Lenght}"  VerticalAlignment="Center"/>
+                                    <Image Source="{Binding champNat}"  Width="25" Height="25" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="PAYS" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <Image Source="{Binding pays}"  Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="AGE" HeaderContainerStyle="{StaticResource MyHeaderStyle}" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding age}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                        <TextBlock.Background>
+                                            <ImageBrush  ImageSource="{Binding couleurCarte}"/>
+                                        </TextBlock.Background>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="NIV/POT"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <materialDesign:PackIcon Kind="{Binding star1}" Grid.Column="0"  Width="25" Height="25" >
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star1Hidden}" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                    <materialDesign:PackIcon Kind="{Binding star2}" Grid.Column="1"  Width="25" Height="25"  >
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star2Hidden}" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                    
+                                    <materialDesign:PackIcon Kind="{Binding star3}" Grid.Column="2"  Width="25" Height="25">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star3Hidden}" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                        </materialDesign:PackIcon>
+                                        
+                                        <materialDesign:PackIcon Kind="{Binding star4}" Grid.Column="3"  Width="25" Height="25" >
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star4Hidden}" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                    
+                                    <materialDesign:PackIcon Kind="{Binding star5}"  Grid.Column="4"  Width="25" Height="25">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                                <GradientStop Color="#FFD68712" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <materialDesign:PackIcon Kind="{Binding star5Hidden}" Grid.Column="4"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                                <SkewTransform AngleY="0" AngleX="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="PLA" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding plaRound}" ToolTip="{Binding pla}" Foreground="{Binding plaColor}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="MON"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding monRound}" ToolTip="{Binding mon}" Foreground="{Binding monColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="DES" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding desRound}" ToolTip="{Binding des}" Foreground="{Binding desColor}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="VAL"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding valRound}" ToolTip="{Binding val}" Foreground="{Binding valColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="PAV"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding pavRound}" ToolTip="{Binding pav}" Foreground="{Binding pavColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="AGI"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding agiRound}" ToolTip="{Binding agi}" Foreground="{Binding agiColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="CLM" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding clmRound}"  ToolTip="{Binding clm}" Foreground="{Binding clmColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="SPR"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding sprRound}"  ToolTip="{Binding spr}" Foreground="{Binding sprColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="END"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center" >
+                                    <TextBlock Text="{Binding endRound}" ToolTip="{Binding end}" Foreground="{Binding endColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn   Header="RES"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding resRound}" ToolTip="{Binding res}" Foreground="{Binding resColor}"  FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="PRIX"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding prix}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="J" HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding jours}" Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock Grid.Row="2" Grid.Column="0"  Text="Spécialité :" HorizontalAlignment="Right" Foreground="White" Margin="0,5,0,0"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Name="comboBoxSpecialite" SelectionChanged="Sort"  Background="#FFD68712"  Foreground="White" SelectedIndex="0" HorizontalAlignment="Stretch" ItemContainerStyle="{StaticResource MyComboBoxStyle}" HorizontalContentAlignment="Center">
+            <ComboBoxItem>All</ComboBoxItem>
+            <ComboBoxItem>Baroudeur</ComboBoxItem>
+            <ComboBoxItem>Grimpeur</ComboBoxItem>
+            <ComboBoxItem>Vallon</ComboBoxItem>
+            <ComboBoxItem>Pavé</ComboBoxItem>
+            <ComboBoxItem>Cyclo cross</ComboBoxItem>
+            <ComboBoxItem>CLM</ComboBoxItem>
+            <ComboBoxItem>Omnium</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Grid.Row="3" Grid.Column="0"  Text="Age max :" HorizontalAlignment="Right" Foreground="White" Margin="0,6,0,0"/>
+        <ComboBox Grid.Row="3" Grid.Column="1"  Name="comboBoxAgeMax" SelectionChanged="Sort"  Background="#FFD68712"  Foreground="White" SelectedIndex="0" HorizontalAlignment="Stretch"  ItemContainerStyle="{StaticResource MyComboBoxStyle}" HorizontalContentAlignment="Center">
+            <ComboBoxItem>50</ComboBoxItem>
+            <ComboBoxItem>36</ComboBoxItem>
+            <ComboBoxItem>35</ComboBoxItem>
+            <ComboBoxItem>34</ComboBoxItem>
+            <ComboBoxItem>33</ComboBoxItem>
+            <ComboBoxItem>32</ComboBoxItem>
+            <ComboBoxItem>31</ComboBoxItem>
+            <ComboBoxItem>30</ComboBoxItem>
+            <ComboBoxItem>29</ComboBoxItem>
+            <ComboBoxItem>28</ComboBoxItem>
+            <ComboBoxItem>27</ComboBoxItem>
+            <ComboBoxItem>26</ComboBoxItem>
+            <ComboBoxItem>25</ComboBoxItem>
+            <ComboBoxItem>24</ComboBoxItem>
+            <ComboBoxItem>23</ComboBoxItem>
+            <ComboBoxItem>22</ComboBoxItem>
+            <ComboBoxItem>21</ComboBoxItem>
+            <ComboBoxItem>20</ComboBoxItem>
+            <ComboBoxItem>19</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Grid.Row="4" Grid.Column="0"  Text="Prix max :" HorizontalAlignment="Right" Foreground="White" Margin="0,0,0,0" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="comboBoxPrixMax" SelectionChanged="Sort" Background="#FFD68712"  Foreground="White" SelectedIndex="0"  HorizontalAlignment="Stretch"  ItemContainerStyle="{StaticResource MyComboBoxStyle}" HorizontalContentAlignment="Center">
+            <ComboBoxItem>10 000 000</ComboBoxItem>
+            <ComboBoxItem>2 000 000</ComboBoxItem>
+            <ComboBoxItem>1 500 000</ComboBoxItem>
+            <ComboBoxItem>1 000 000</ComboBoxItem>
+            <ComboBoxItem>500 000</ComboBoxItem>
+            <ComboBoxItem>250 000</ComboBoxItem>
+            <ComboBoxItem>100 000</ComboBoxItem>
+            <ComboBoxItem>1</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock  Grid.Row="5" Grid.Column="0"  Text="Potentiel min :" HorizontalAlignment="Right" Foreground="White" Margin="0,2,0,0" VerticalAlignment="Center"/>
+        <ComboBox  Grid.Row="5" Grid.Column="1" Name="comboBoxPotentielMin"  SelectionChanged="Sort" Background="#FFD68712"  Foreground="White" SelectedIndex="0" HorizontalAlignment="Stretch"  ItemContainerStyle="{StaticResource MyComboBoxStyle}" HorizontalContentAlignment="Center">
+            <ComboBoxItem  Name="comboPot1">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem  Name="comboPot2">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem  Name="comboPot3">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem  Name="comboPot4">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboPot5">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboPot6">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboPot7">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="3"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboPot8">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboPot9">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="4"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboPot10">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="StarOutline" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+        </ComboBox>
+
+
+        <TextBlock  Grid.Row="6" Grid.Column="0"  Text="Niveau min :" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center" Margin="0,3,0,0"/>
+        <ComboBox Name="comboBoxNiveauMin" Grid.Row="6" Grid.Column="1" SelectionChanged="Sort" Foreground="White" Background="#FFD68712" SelectedIndex="0" VerticalAlignment="Stretch" ItemContainerStyle="{StaticResource MyComboBoxStyle}" HorizontalContentAlignment="Center">
+            <ComboBoxItem Name="comboNiv0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv1">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv2">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv3">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv4">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv5">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv6">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="None" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv7">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="3"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv8">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="None" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv9">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                    <materialDesign:PackIcon Kind="StarHalf" Grid.Column="4"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem Name="comboNiv10">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="star" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="0"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="1"  Width="25" Height="25"  >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="2"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" />
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="3"  Width="25" Height="25" >
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+
+                    <materialDesign:PackIcon Kind="star" Grid.Column="4"  Foreground="Black"   Width="25" Height="25"/>
+                    <materialDesign:PackIcon Kind="Star" Grid.Column="4"  Width="25" Height="25">
+                        <materialDesign:PackIcon.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE5D519" Offset="0"/>
+                                <GradientStop Color="#FFD68712" Offset="1"/>
+                            </LinearGradientBrush>
+                        </materialDesign:PackIcon.Foreground>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </ComboBoxItem>
+        </ComboBox>
+
+        <Button Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" Background="#FFCC1F44" Click="btnReset_click" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">RESET</TextBlock>
+                <materialDesign:PackIcon Kind="DeleteRestore" Foreground="White" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+
+
+
+    </Grid>
+</Page>

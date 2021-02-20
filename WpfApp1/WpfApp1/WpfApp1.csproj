@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F569F67-E8A0-4BB2-9256-7537A187A892}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfApp1</RootNamespace>
+    <AssemblyName>WpfApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WpfApp1.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.4.3.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.26.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.26\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.2.0.0\lib\net47\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.7.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.7\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.1.5.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.MahApps.0.1.5\lib\net452\MaterialDesignThemes.MahApps.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=3.2.0.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.3.2.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.10.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Extensions.Logging.3.0.1\lib\netstandard2.0\Serilog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=3.1.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.3.1.1\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Debug, Version=1.0.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Debug.1.0.1\lib\net46\Serilog.Sinks.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="answers\Calendrier.cs" />
+    <Compile Include="answers\ClassementsEquipe.cs" />
+    <Compile Include="answers\CoureurIndividual.cs" />
+    <Compile Include="answers\EngagementCoureur.cs" />
+    <Compile Include="answers\Info.cs" />
+    <Compile Include="answers\Medaille.cs" />
+    <Compile Include="answers\ParcoursPro.cs" />
+    <Compile Include="answers\ResultatsCoureur.cs" />
+    <Compile Include="answers\ResultatsCoursesDispos.cs" />
+    <Compile Include="answers\ResultatsEquipe.cs" />
+    <Compile Include="answers\Engagement.cs" />
+    <Compile Include="answers\MedailleCoureur.cs" />
+    <Compile Include="answers\Recuperation.cs" />
+    <Compile Include="answers\Resultats.cs" />
+    <Compile Include="answers\Sprinteur.cs" />
+    <Compile Include="answers\Tactique.cs" />
+    <Compile Include="answers\TactiqueIndividuelle.cs" />
+    <Compile Include="answers\TransfertDaily.cs" />
+    <Compile Include="answers\TransfertJuniors.cs" />
+    <Compile Include="answers\Transfert.cs" />
+    <Compile Include="answers\VipMedailles.cs" />
+    <Page Include="Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Answers.cs" />
+    <Compile Include="answers\Club.cs" />
+    <Compile Include="answers\Comment.cs" />
+    <Compile Include="answers\Coureur.cs" />
+    <Compile Include="answers\Coureurs.cs" />
+    <Compile Include="answers\CoureursSuivi.cs" />
+    <Compile Include="answers\CoureurSuivi.cs" />
+    <Compile Include="answers\Entrainement.cs" />
+    <Compile Include="answers\EntrainementCoureur.cs" />
+    <Compile Include="answers\EquipesSuivi.cs" />
+    <Compile Include="answers\EquipeSuivi.cs" />
+    <Compile Include="answers\Forum1.cs" />
+    <Compile Include="answers\Forum2.cs" />
+    <Compile Include="answers\Historique.cs" />
+    <Compile Include="answers\Materiel.cs" />
+    <Compile Include="answers\Message.cs" />
+    <Compile Include="answers\Recherche.cs" />
+    <Compile Include="answers\RechercheMessageConversation.cs" />
+    <Compile Include="answers\Scout.cs" />
+    <Compile Include="answers\Stage.cs" />
+    <Compile Include="answers\StageCoureur.cs" />
+    <Compile Include="answers\Transaction.cs" />
+    <Compile Include="answers\VipStats.cs" />
+    <Compile Include="answers\VipStatsCoureurs.cs" />
+    <Compile Include="answers\VipStatsEquipes.cs" />
+    <Compile Include="answers\VipSuivi.cs" />
+    <Compile Include="answers\VipSuiviCoureur.cs" />
+    <Compile Include="answers\VipSuiviCoureurLine.cs" />
+    <Compile Include="answers\VMMagazine.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="answers\Staff.cs" />
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PagesLeft\PageAcheterVIP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageBlocNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageChampNat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageCalendrier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PagesLeft\PageClassements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageCoureurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageCoureursSurveilles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageCreerTeam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageEngagements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageEntrainements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageEquipement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageEquipesSurveillees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageFinances.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageForum.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageGestionMembres.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageListeDesTeams.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageMaTeam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageMedailles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageNationalite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageObjectifs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageProchaineCourse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageRecherche.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageResultats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageStage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageStatsSpeciales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageSuivi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageTactique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageTeams.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageTransferts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesLeft\PageTransfertsGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PagesLeft\PageTransfertsDaily.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PagesLeft\PageTransfertsJuniors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PagesLeft\PageVMMagazine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Subtitle\SubtitleEmpty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Subtitle\SubtitleVip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Subtitle\SubtitleWorld.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Subtitle\SubtitleResults.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Subtitle\SubtitleTeams.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Subtitle\SubtitleTeam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="answers\Objectifs.cs" />
+    <Compile Include="CommonLibrary.cs" />
+    <Compile Include="PagesLeft\PageAcheterVIP.xaml.cs">
+      <DependentUpon>PageAcheterVIP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageBlocNote.xaml.cs">
+      <DependentUpon>PageBlocNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageChampNat.xaml.cs">
+      <DependentUpon>PageChampNat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageCalendrier.xaml.cs">
+      <DependentUpon>PageCalendrier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageClassements.xaml.cs">
+      <DependentUpon>PageClassements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageCoureurs.xaml.cs">
+      <DependentUpon>PageCoureurs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageCoureursSurveilles.xaml.cs">
+      <DependentUpon>PageCoureursSurveilles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageCreerTeam.xaml.cs">
+      <DependentUpon>PageCreerTeam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageEngagements.xaml.cs">
+      <DependentUpon>PageEngagements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageEntrainements.xaml.cs">
+      <DependentUpon>PageEntrainements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageEquipement.xaml.cs">
+      <DependentUpon>PageEquipement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageEquipesSurveillees.xaml.cs">
+      <DependentUpon>PageEquipesSurveillees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageFinances.xaml.cs">
+      <DependentUpon>PageFinances.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageForum.xaml.cs">
+      <DependentUpon>PageForum.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageGestionMembres.xaml.cs">
+      <DependentUpon>PageGestionMembres.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageListeDesTeams.xaml.cs">
+      <DependentUpon>PageListeDesTeams.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageMaTeam.xaml.cs">
+      <DependentUpon>PageMaTeam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageMedailles.xaml.cs">
+      <DependentUpon>PageMedailles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageMessages.xaml.cs">
+      <DependentUpon>PageMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageNationalite.xaml.cs">
+      <DependentUpon>PageNationalite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageObjectifs.xaml.cs">
+      <DependentUpon>PageObjectifs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageProchaineCourse.xaml.cs">
+      <DependentUpon>PageProchaineCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageRecherche.xaml.cs">
+      <DependentUpon>PageRecherche.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageResultats.xaml.cs">
+      <DependentUpon>PageResultats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageSelection.xaml.cs">
+      <DependentUpon>PageSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageStaff.xaml.cs">
+      <DependentUpon>PageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageStage.xaml.cs">
+      <DependentUpon>PageStage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageStatsSpeciales.xaml.cs">
+      <DependentUpon>PageStatsSpeciales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageSuivi.xaml.cs">
+      <DependentUpon>PageSuivi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageTactique.xaml.cs">
+      <DependentUpon>PageTactique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageTeams.xaml.cs">
+      <DependentUpon>PageTeams.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageTransferts.xaml.cs">
+      <DependentUpon>PageTransferts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageTransfertsGeneral.xaml.cs">
+      <DependentUpon>PageTransfertsGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageTransfertsDaily.xaml.cs">
+      <DependentUpon>PageTransfertsDaily.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageTransfertsJuniors.xaml.cs">
+      <DependentUpon>PageTransfertsJuniors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PagesLeft\PageVMMagazine.xaml.cs">
+      <DependentUpon>PageVMMagazine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Requests.cs" />
+    <Compile Include="Profil1.cs" />
+    <Compile Include="Profil2.cs" />
+    <Compile Include="SingleInstance.cs" />
+    <Compile Include="Subtitle\SubtitleEmpty.xaml.cs">
+      <DependentUpon>SubtitleEmpty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Subtitle\SubtitleVip.xaml.cs">
+      <DependentUpon>SubtitleVip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Subtitle\SubtitleWorld.xaml.cs">
+      <DependentUpon>SubtitleWorld.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Subtitle\SubtitleResults.xaml.cs">
+      <DependentUpon>SubtitleResults.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Subtitle\SubtitleTeams.xaml.cs">
+      <DependentUpon>SubtitleTeams.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Subtitle\SubtitleTeam.xaml.cs">
+      <DependentUpon>SubtitleTeam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\HomeBackground2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BlackStar.png" />
+    <Resource Include="images\ClassementGeneral.png" />
+    <Resource Include="images\FulklPotential.png" />
+    <Resource Include="images\fullStar.png" />
+    <Resource Include="images\MoinsDe25Ans.png" />
+    <Resource Include="images\ProfilItt.png" />
+    <Resource Include="images\ProfilMontagne.png" />
+    <Resource Include="images\ProfilPave.png" />
+    <Resource Include="images\ProfilPlat.png" />
+    <Resource Include="images\ProfilTtt.png" />
+    <Resource Include="images\ProfilVallon.png" />
+    <Resource Include="images\SemiPotential.png" />
+    <Resource Include="images\SemiStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icones\selection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icones\Bleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icones\Vert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icones\couronne.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icones\monde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icones\1589488012-vm-maillot-team-noob.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

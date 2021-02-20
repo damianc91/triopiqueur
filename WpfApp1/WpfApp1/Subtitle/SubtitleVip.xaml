@@ -1,0 +1,63 @@
+﻿<Page x:Class="WpfApp1.SubtitleVip"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SubtitleVip">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="9*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1">
+            <Button Background="#FF929BA7" x:Name="btnCoureursSurveilles" Click="btnCoureursSurveilles_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Coureurs surveillés" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Button Background="#FF929BA7" x:Name="btnEquipesSurveillees" Click="btnEquipesSurveillees_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Equipes surveillées" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="3">
+            <Button Background="#FF929BA7" x:Name="btnStatsSpeciales" Click="btnStatsSpeciales_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Stats spéciales" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="4">
+            <Button Background="#FF929BA7" x:Name="btnSuivi" Click="btnSuivi_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Suivi" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="5">
+            <Button Background="#FF929BA7" x:Name="btnBlocNote" Click="btnBlocNote_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Bloc note" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="6">
+            <Button Background="#FF929BA7" x:Name="btnMedailles" Click="btnMedailles_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Médailles" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="7">
+            <Button Background="#FF929BA7" x:Name="btnAcheterVIP" Click="btnAcheterVIP_Click" BorderBrush="{x:Null}" Height="Auto"  Margin="1,0" >
+                <Label Content="Acheter VIP" Foreground="White" Margin="-18,0"/>
+            </Button>
+        </StackPanel>
+
+
+
+    </Grid>
+</Page>

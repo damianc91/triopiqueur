@@ -1,0 +1,19 @@
+<root>
+  <currentTeam>1</currentTeam>
+  <teams>
+    <team>
+      <name>team noob</name>
+      <id>5514</id>
+      <money>+17 061 624 €</money>
+      <division>1</division>
+    </team>
+    <team>
+      <name>team noob (2)</name>
+      <id>1948</id>
+    </team>
+    <team>
+      <name>team noob (3)</name>
+      <id>2791</id>
+    </team>
+  </teams>
+</root>
