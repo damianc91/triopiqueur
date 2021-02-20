@@ -8,8 +8,6 @@ namespace WpfApp1.answers
 {
     public class Coureur
     {
-
-
         public string nom { get; set; }
         public string id { get; set; }
         public string pays { get; set; }
@@ -68,7 +66,9 @@ namespace WpfApp1.answers
         public string couleurCarte { get; set; }
         public string specialite { get; set; }
         public int niveauMax { get; set; }
+        public string niveauMaxString { get; set; }
         public int potentielMax { get; set; }
+        public string potentielMaxString { get; set; }
         public int niveauBaroudeur { get; set; }
         public int potentielBaroudeur { get; set; }
         public int niveauGrimpeur { get; set; }

@@ -87,113 +87,21 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn  Header="NIV/POT"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                    <GridViewColumn  Header="NIV"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <materialDesign:PackIcon Kind="{Binding star1}" Grid.Column="0"  Width="25" Height="25" >
-                                        <materialDesign:PackIcon.Foreground>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FFE5D519" Offset="0"/>
-                                                <GradientStop Color="#FFD68712" Offset="1"/>
-                                            </LinearGradientBrush>
-                                        </materialDesign:PackIcon.Foreground>
-                                    </materialDesign:PackIcon>
-                                    <materialDesign:PackIcon Kind="{Binding star1Hidden}" Grid.Column="0"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
-                                        <materialDesign:PackIcon.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                                                <SkewTransform AngleY="0" AngleX="0"/>
-                                                <RotateTransform Angle="0"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </materialDesign:PackIcon.RenderTransform>
-                                    </materialDesign:PackIcon>
-
-                                    <materialDesign:PackIcon Kind="{Binding star2}" Grid.Column="1"  Width="25" Height="25"  >
-                                        <materialDesign:PackIcon.Foreground>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FFE5D519" Offset="0"/>
-                                                <GradientStop Color="#FFD68712" Offset="1"/>
-                                            </LinearGradientBrush>
-                                        </materialDesign:PackIcon.Foreground>
-                                    </materialDesign:PackIcon>
-                                    <materialDesign:PackIcon Kind="{Binding star2Hidden}" Grid.Column="1"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
-                                        <materialDesign:PackIcon.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                                                <SkewTransform AngleY="0" AngleX="0"/>
-                                                <RotateTransform Angle="0"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </materialDesign:PackIcon.RenderTransform>
-                                    </materialDesign:PackIcon>
-                                    
-                                    <materialDesign:PackIcon Kind="{Binding star3}" Grid.Column="2"  Width="25" Height="25">
-                                        <materialDesign:PackIcon.Foreground>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FFE5D519" Offset="0"/>
-                                                <GradientStop Color="#FFD68712" Offset="1"/>
-                                            </LinearGradientBrush>
-                                        </materialDesign:PackIcon.Foreground>
-                                    </materialDesign:PackIcon>
-                                    <materialDesign:PackIcon Kind="{Binding star3Hidden}" Grid.Column="2"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
-                                        <materialDesign:PackIcon.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                                                <SkewTransform AngleY="0" AngleX="0"/>
-                                                <RotateTransform Angle="0"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </materialDesign:PackIcon.RenderTransform>
-                                        </materialDesign:PackIcon>
-                                        
-                                        <materialDesign:PackIcon Kind="{Binding star4}" Grid.Column="3"  Width="25" Height="25" >
-                                        <materialDesign:PackIcon.Foreground>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FFE5D519" Offset="0"/>
-                                                <GradientStop Color="#FFD68712" Offset="1"/>
-                                            </LinearGradientBrush>
-                                        </materialDesign:PackIcon.Foreground>
-                                    </materialDesign:PackIcon>
-                                    <materialDesign:PackIcon Kind="{Binding star4Hidden}" Grid.Column="3"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
-                                        <materialDesign:PackIcon.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                                                <SkewTransform AngleY="0" AngleX="0"/>
-                                                <RotateTransform Angle="0"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </materialDesign:PackIcon.RenderTransform>
-                                    </materialDesign:PackIcon>
-                                    
-                                    <materialDesign:PackIcon Kind="{Binding star5}"  Grid.Column="4"  Width="25" Height="25">
-                                        <materialDesign:PackIcon.Foreground>
-                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                <GradientStop Color="#FFE5D519" Offset="0"/>
-                                                <GradientStop Color="#FFD68712" Offset="1"/>
-                                            </LinearGradientBrush>
-                                        </materialDesign:PackIcon.Foreground>
-                                    </materialDesign:PackIcon>
-                                    <materialDesign:PackIcon Kind="{Binding star5Hidden}" Grid.Column="4"  Foreground="Black"   Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
-                                        <materialDesign:PackIcon.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                                                <SkewTransform AngleY="0" AngleX="0"/>
-                                                <RotateTransform Angle="0"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </materialDesign:PackIcon.RenderTransform>
-                                    </materialDesign:PackIcon>
-                                </Grid>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding niveauMax}"  Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Header="POT"  HeaderContainerStyle="{StaticResource MyHeaderStyle}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding potentielMax}"  Foreground="White" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

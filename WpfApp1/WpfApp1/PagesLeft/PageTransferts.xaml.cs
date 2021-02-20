@@ -52,19 +52,6 @@ namespace WpfApp1.Pages
                 //break;
             } while (temp50Transferts.Count == 50);
 
-            //PageCalendrier.joursAvantSaison = 16;
-
-            //PageCalendrier.joursAvantSaison = 47;
-
-            //allTransferts.Add(new Transfert("maxTchaiko", "29", "81.167", "99.982", "78.296", "79.966", "75.520", "65.520", "68.520", "76.520", "83.039", "86.901", "459837"));
-            //allTransferts.Add(new Transfert("maxGrimp", "19", "70", "74", "69", "70", "70", "70", "70", "69", "69", "68"));
-            //allTransferts.Add(new Transfert("maxBar", "19", "74", "70", "70", "70", "70", "70", "70", "70", "70", "70"));
-            //allTransferts.Add(new Transfert("maxVal", "19", "70", "70", "70", "74", "70", "70", "70", "70", "70", "70"));
-            //allTransferts.Add(new Transfert("maxPav", "19", "70", "70", "70", "70", "74", "70", "70", "70", "70", "70"));
-            //allTransferts.Add(new Transfert("maxAgi", "19", "70", "70", "70", "70", "70", "74", "70", "70", "70", "70"));
-            //allTransferts.Add(new Transfert("maxClm", "19", "70", "70", "70", "70", "70", "70", "74", "70", "70", "70"));
-            //allTransferts.Add(new Transfert("maxSpr", "19", "70", "70", "70", "70", "70", "70", "70", "74", "70", "70"));
-
             foreach (Transfert trans in allTransferts)
             {
                 //trans.potentielBaroudeur = CommonLibrary.FindPotentielPla(trans.age, trans.pla, trans.val, trans.end, trans.res);
@@ -75,6 +62,7 @@ namespace WpfApp1.Pages
                 //trans.potentielAgilite = CommonLibrary.FindPotentielAgi(trans.age, trans.pla, trans.mon, trans.val, trans.agi, trans.end, trans.res);
                 //trans.potentielSpr = CommonLibrary.FindPotentielSpr(trans.age, trans.pla, trans.val, trans.spr, trans.end, trans.res);
                 trans.potentielMax =  CommonLibrary.FindPotentielMax(trans.potentielBaroudeur, trans.potentielGrimpeur, trans.potentielVallon, trans.potentielPave, trans.potentielAgilite, trans.potentielClm, trans.potentielSpr);
+                trans.potentielMaxString = trans.potentielMax.ToString();
 
                 if (trans.potentielMax == 0)
                 {
@@ -114,6 +102,8 @@ namespace WpfApp1.Pages
                 //trans.niveauAgilite = CommonLibrary.FindLevelAgi(trans.pla, trans.val, trans.mon, trans.agi, trans.res);
                 //trans.niveauSpr = CommonLibrary.FindLevelSpr( trans.pla, trans.val, trans.spr, trans.end, trans.res);
                 trans.niveauMax = CommonLibrary.FindLevelMax(trans.niveauBaroudeur, trans.niveauGrimpeur, trans.niveauVallon, trans.niveauPave, trans.niveauAgilite, trans.niveauClm, trans.niveauSpr);
+                trans.niveauMaxString = trans.niveauMax.ToString();
+
                 trans.UpdateStars();
               
 
@@ -190,8 +180,11 @@ namespace WpfApp1.Pages
                             case "J":
                                 c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 3;
                                 break;
-                            case "NIV/POT":
-                                c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 16;
+                            case "NIV":
+                                c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 8;
+                                break;
+                            case "POT":
+                                c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 8;
                                 break;
                             case "AGE":
                                 c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 4;
@@ -272,17 +265,11 @@ namespace WpfApp1.Pages
                         jAsc = false;
                     }
                     break;
-                case "NIV/POT":
-                    if (nivAsc)
-                    {
-                        Lvtransferts.ItemsSource = allTransferts.OrderByDescending(t => t.niveauMax);
-                        nivAsc = false;
-                    }
-                    else
-                    {
-                        Lvtransferts.ItemsSource = allTransferts.OrderByDescending(t => t.potentielMax);
-                        nivAsc = true;
-                    }
+                case "NIV":
+                    Lvtransferts.ItemsSource = allTransferts.OrderByDescending(t => t.niveauMax);
+                    break;
+                case "POT":
+                    Lvtransferts.ItemsSource = allTransferts.OrderByDescending(t => t.potentielMax);
                     break;
                 case "AGE":
                     if (ageAsc)

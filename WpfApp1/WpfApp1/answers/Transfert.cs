@@ -65,6 +65,8 @@ namespace WpfApp1
         public string specialite { get; set; }
         public int niveauMax { get; set; }
         public int potentielMax { get; set; }
+        public string niveauMaxString { get; set; }
+        public string potentielMaxString { get; set; }
         public int niveauBaroudeur { get; set; }
         public int potentielBaroudeur { get; set; }
         public int niveauGrimpeur { get; set; }

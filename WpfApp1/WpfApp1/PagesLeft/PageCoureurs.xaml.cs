@@ -28,7 +28,6 @@ namespace WpfApp1.Pages
         public string folderImages = "C:\\Users\\Damian\\source\\repos\\WpfApp1\\WpfApp1\\icones\\";
         public string folderVm = "https://www.velo-manager.net/";
         private bool jAsc;
-        private bool nivAsc;
         private bool ageAsc;
         private bool ucvAsc;
         private bool santeAsc;
@@ -45,14 +44,6 @@ namespace WpfApp1.Pages
 
             CommonLibrary.initializeLevelMaxMin();
 
-            //allitemferts.Add(new itemfert("maxGrimp", "19", "70", "74", "69", "70", "70", "70", "70", "69", "69", "68"));
-            //allitemferts.Add(new itemfert("maxBar", "19", "74", "70", "70", "70", "70", "70", "70", "70", "70", "70"));
-            //allitemferts.Add(new itemfert("maxVal", "19", "70", "70", "70", "74", "70", "70", "70", "70", "70", "70"));
-            //allitemferts.Add(new itemfert("maxPav", "19", "70", "70", "70", "70", "74", "70", "70", "70", "70", "70"));
-            //allitemferts.Add(new itemfert("maxAgi", "19", "70", "70", "70", "70", "70", "74", "70", "70", "70", "70"));
-            //allitemferts.Add(new itemfert("maxClm", "19", "70", "70", "70", "70", "70", "70", "74", "70", "70", "70"));
-            //allitemferts.Add(new itemfert("maxSpr", "19", "70", "70", "70", "70", "70", "70", "70", "74", "70", "70"));
-
             foreach (Coureur item in allCoureurs.coureur)
             {
                 //item.potentielBaroudeur = CommonLibrary.FindPotentielPla(item.age, item.pla, item.val, item.end, item.res);
@@ -63,6 +54,7 @@ namespace WpfApp1.Pages
                 item.potentielGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindPotentielMon(item.age, item.pla, item.mon, item.des, item.val, item.end, item.res, joursAvantSaison: PageCalendrier.joursAvantSaison));
                 item.potentielVallon = CommonLibrary.FindStarsVal(CommonLibrary.FindPotentielVal(item.age, item.pla, item.mon, item.val, item.end, item.res, joursAvantSaison:PageCalendrier.joursAvantSaison));
                 item.potentielMax = CommonLibrary.FindPotentielMax(item.potentielBaroudeur, item.potentielGrimpeur, item.potentielVallon, item.potentielPave, item.potentielAgilite, item.potentielClm, item.potentielSpr);
+                item.potentielMaxString = item.potentielMax.ToString();
 
                 item.pays = folderVm + item.pays;
 
@@ -93,16 +85,19 @@ namespace WpfApp1.Pages
                 //item.niveauClm = CommonLibrary.FindLevelClm(item.pla, item.spr, item.clm, item.res);
                 //item.niveauAgilite = CommonLibrary.FindLevelAgi(item.pla, item.val, item.mon, item.agi, item.res);
                 //item.niveauSpr = CommonLibrary.FindLevelSpr(item.pla, item.val, item.spr, item.end, item.res);
-                item.niveauGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindLevelMon(item.pla, item.mon, item.des, item.val, item.end, item.res));
-                item.niveauVallon = CommonLibrary.FindStarsVal(CommonLibrary.FindLevelVal(item.pla, item.mon, item.val, item.end, item.res));
+
+                var v = CommonLibrary.FindLevelMon(item.pla, item.mon, item.des, item.val, item.end, item.res);
+                item.niveauGrimpeur = CommonLibrary.FindStarsGrimp(v);
+                //item.niveauGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindLevelMon(item.pla, item.mon, item.des, item.val, item.end, item.res));
+
+                var val2 = CommonLibrary.FindLevelVal(item.pla, item.mon, item.val, item.end, item.res);
+                item.niveauVallon = CommonLibrary.FindStarsVal(val2);
                 item.niveauMax = CommonLibrary.FindLevelMax(item.niveauBaroudeur, item.niveauGrimpeur, item.niveauVallon, item.niveauPave, item.niveauAgilite, item.niveauClm, item.niveauSpr);
+                item.niveauMaxString = item.niveauMax.ToString();
 
                 item.UpdateStars();
 
-
                 item.aVendre = folderVm + item.aVendre;
-
-
 
 
                 CoureurIndividual coureur = Answers.FindPageCoureur(Requests.PageCoureur(item.id));
@@ -185,8 +180,11 @@ namespace WpfApp1.Pages
                             case "SANTE":
                                 c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 8;
                                 break;
-                            case "NIV/POT":
-                                c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 16;
+                            case "NIV":
+                                c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 8;
+                                break;
+                            case "POT":
+                                c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 8;
                                 break;
                             case "AGE":
                                 c.Width = (objMainWindows.columnFrameLeft.ActualWidth) / 100 * 4;
@@ -282,17 +280,11 @@ namespace WpfApp1.Pages
                         santeAsc = true;
                     }
                     break;
-                case "NIV/POT":
-                    if (nivAsc)
-                    {
-                        Lvcoureurs.ItemsSource = allCoureurs.coureur.OrderByDescending(t => t.niveauMax);
-                        nivAsc = false;
-                    }
-                    else
-                    {
-                        Lvcoureurs.ItemsSource = allCoureurs.coureur.OrderByDescending(t => t.potentielMax);
-                        nivAsc = true;
-                    }
+                case "NIV":
+                    Lvcoureurs.ItemsSource = allCoureurs.coureur.OrderByDescending(t => t.niveauMax);
+                    break;
+                case "POT":
+                    Lvcoureurs.ItemsSource = allCoureurs.coureur.OrderByDescending(t => t.potentielMax);
                     break;
                 case "AGE":
                     if (ageAsc)

@@ -12,15 +12,15 @@ namespace WpfApp1
     public class CommonLibrary
     {
         public const double DAILY_GAIN_JUNIOR = 0.04;
-        public const double GAIN_STAGE_SPE1 = 0.69;
-        public const double GAIN_STAGE_SPE2 = 0.43;
-        public const double GAIN_STAGE_SPE3 = 0.29;
+        public const double GAIN_STAGE_SPE1 = 0.68;
+        public const double GAIN_STAGE_SPE2 = 0.42;
+        public const double GAIN_STAGE_SPE3 = 0.28;
         public const double GAIN_BONUS_LESS80 = 0.04;
         public const double GAIN_BONUS_LESS85 = 0.03;
         public const double GAIN_BONUS_LESS90 = 0.01;
         public const double AGE_SENIOR = 23;
-        public const double REGRESSION_30 = 0.25;
-        public const double REGRESSION_31 = 0.5;
+        public const double REGRESSION_30 = 0.3;
+        public const double REGRESSION_31 = 0.6;
         public static double minGrimp;
         public static double maxGrimp;
         public static double minVal;
@@ -53,8 +53,10 @@ namespace WpfApp1
 
         internal static void initializeLevelMaxMin()
         {
-            
-
+            minGrimp = FindPotentielMon(age: "19", pla: "57.00", mon: "67.00", des: "57.00", val: "57.00", end: "61.00", res: "61.00");
+            maxGrimp = FindPotentielMon(age:"19", pla:"70.00", mon:"74.00", des:"70.00", val:"70.00", end:"70.00", res:"70.00");
+            minVal = FindPotentielVal(age:"19",  pla:"57.00",  mon:"57.00",  val:"67.00",  end:"61.00",  res:"61.00");
+            maxVal = FindPotentielVal(age: "19", pla: "70.00", mon: "70.00", val: "74.00", end: "70.00", res: "70.00");
         }
 
         internal static string FindMyTeam(string idEquipe)
@@ -119,10 +121,10 @@ namespace WpfApp1
 
         static public void Train_2_90(ref double type1, ref double type2, ref double type3, int age)
         {
-            Log.Debug("30 ans");
-            Log.Debug((100.0 - 0.69 - (0.69 * Math.Max(0, 31 - 30)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - 30, 0), 1))).ToString());
-            Log.Debug("29 ans");
-            Log.Debug((100.0 - 0.69 - (0.69 * Math.Max(0, 31 - 29)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - 29, 0), 1))).ToString());
+            //Log.Debug("30 ans");
+            //Log.Debug((100.0 - 0.69 - (0.69 * Math.Max(0, 31 - 30)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - 30, 0), 1))).ToString());
+            //Log.Debug("29 ans");
+            //Log.Debug((100.0 - 0.69 - (0.69 * Math.Max(0, 31 - 29)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - 29, 0), 1))).ToString());
 
             double limit2 = 100.0 - 0.69 - (0.69 * Math.Max(0, 31 - age)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - age, 0), 1));
 
@@ -159,7 +161,7 @@ namespace WpfApp1
 
         static private double Formula(double niveau)
         {
-            var offset = ((-1) * (0.0006 * niveau) + 0.0975 + Bonus(niveau)) * 41 / 47;
+            var offset = ((-1) * (0.0006 * niveau) + 0.0975 + Bonus(niveau)) * 40 / 47;
 
             return niveau + offset;
         }
@@ -575,11 +577,11 @@ namespace WpfApp1
                 // Perte age
                 if (tempAge == 31)
                 {
-                    tempPla -= REGRESSION_30;
-                    tempVal -= REGRESSION_30;
-                    tempEnd -= REGRESSION_30;
-                    tempRes -= REGRESSION_30;
-                    tempMon -= REGRESSION_30;
+                    tempPla -= REGRESSION_31;
+                    tempVal -= REGRESSION_31;
+                    tempEnd -= REGRESSION_31;
+                    tempRes -= REGRESSION_31;
+                    tempMon -= REGRESSION_31;
                 }
                 else if (tempAge == 30)
                 {
@@ -616,7 +618,12 @@ namespace WpfApp1
 
         private static double FormulaVal(double tempPla, double tempMon, double tempVal, double tempEnd, double tempRes)
         {
-            return (15.0 * tempPla + 5.0 * tempMon + 45.0 * tempVal + 20.0 * tempEnd + 15.0 * tempRes) / 100.0;
+            var r = (15.0 * tempPla + 5.0 * tempMon + 45.0 * tempVal + 20.0 * tempEnd + 15.0 * tempRes) / 100.0;
+            if (r>100.0)
+            {
+                Log.Fatal("");
+            }
+            return r;
         }
 
         static internal double FindPotentielMon(string age, string pla, string mon, string des, string val, string end, string res, int joursAvantSaison = 47)
@@ -644,6 +651,8 @@ namespace WpfApp1
                 }
             }
 
+            Log.Debug("age " + (FormulaMon(tempPla, tempMon, tempDes, tempVal, tempEnd, tempRes)).ToString());
+
             while (tempAge < 31)
             {
                 tempAge++;
@@ -651,12 +660,12 @@ namespace WpfApp1
                 // Perte age
                 if (tempAge == 31)
                 {
-                    tempPla -= REGRESSION_30;
-                    tempVal -= REGRESSION_30;
-                    tempEnd -= REGRESSION_30;
-                    tempRes -= REGRESSION_30;
-                    tempMon -= REGRESSION_30;
-                    tempDes -= REGRESSION_30;
+                    tempPla -= REGRESSION_31;
+                    tempVal -= REGRESSION_31;
+                    tempEnd -= REGRESSION_31;
+                    tempRes -= REGRESSION_31;
+                    tempMon -= REGRESSION_31;
+                    tempDes -= REGRESSION_31;
                 }
                 else if (tempAge == 30)
                 {
@@ -696,12 +705,13 @@ namespace WpfApp1
 
         public static int FindStarsGrimp(double average)
         {
-            return (int) (average * 100 / (maxGrimp - minGrimp)); 
+            return (int)(Math.Max((average - minGrimp), 0) * 200 / (maxGrimp - minGrimp)); 
         }
 
         public static int FindStarsVal(double average)
         {
-            return (int)(average * 100 / (maxVal - minVal));
+            var r = (int)(Math.Max((average - minVal), 0) * 200 / (maxVal - minVal));
+            return r;
         }
 
         private static double FormulaMon(double tempPla, double tempMon, double tempDes, double tempVal, double tempEnd, double tempRes)
@@ -747,13 +757,14 @@ namespace WpfApp1
 
         #region find_level2
 
-        static internal double FindLevelVal(string pla, string val, string mon, string end, string res)
-        {    
-            return FindStarsVal(FormulaVal(double.Parse(pla, CultureInfo.InvariantCulture), double.Parse(mon, CultureInfo.InvariantCulture), double.Parse(val, CultureInfo.InvariantCulture), double.Parse(end, CultureInfo.InvariantCulture), double.Parse(res, CultureInfo.InvariantCulture)));
+        static internal double FindLevelVal(string pla, string mon, string val, string end, string res)
+        {
+            var r = FormulaVal(double.Parse(pla, CultureInfo.InvariantCulture), double.Parse(mon, CultureInfo.InvariantCulture), double.Parse(val, CultureInfo.InvariantCulture), double.Parse(end, CultureInfo.InvariantCulture), double.Parse(res, CultureInfo.InvariantCulture));
+            return r;
         }
 
 
-        static internal double FindLevelMon(string pla, string val, string mon, string des, string end, string res)
+        static internal double FindLevelMon(string pla, string mon, string val, string des, string end, string res)
         {
             return FormulaMon(double.Parse(pla, CultureInfo.InvariantCulture), double.Parse(mon, CultureInfo.InvariantCulture), double.Parse(des, CultureInfo.InvariantCulture), double.Parse(val, CultureInfo.InvariantCulture), double.Parse(end, CultureInfo.InvariantCulture), double.Parse(res, CultureInfo.InvariantCulture));
         }
