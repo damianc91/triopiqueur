@@ -43,9 +43,40 @@
 
 
             <StackPanel Grid.Column="0" MouseDown="Window_MouseMove" Background="#FFFAFAFA" Opacity="0"/>
-            <Button Grid.Column="1" Background="#FFCC951F" x:Name="btnTeam1Choice" Click="btnTeam1Choice_Click" BorderBrush="{x:Null}" Margin="1,0" />
-            <Button Grid.Column="2" Background="{x:Null}" x:Name="btnTeam2Choice" Click="btnTeam2Choice_Click" BorderBrush="{x:Null}" Margin="1,0" />
-            <Button Grid.Column="3" Background="{x:Null}" x:Name="btnTeam3Choice" Click="btnTeam3Choice_Click" BorderBrush="{x:Null}" Margin="1,0" />
+            <Button Grid.Column="1" Background="#FFCC951F" x:Name="btnTeam1Choice" Click="btnTeam1Choice_Click" BorderBrush="{x:Null}" Margin="1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Name="Team1NameTextBlock"  FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="1" Name="Team1MoneyTextBlock"  FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="2" Background="{x:Null}" x:Name="btnTeam2Choice" Click="btnTeam2Choice_Click" BorderBrush="{x:Null}" Margin="1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Name="Team2NameTextBlock"  FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="1" Name="Team2MoneyTextBlock"  FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="3" Background="{x:Null}" x:Name="btnTeam3Choice" Click="btnTeam3Choice_Click" BorderBrush="{x:Null}" Margin="1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Name="Team3NameTextBlock"  FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="1" Name="Team3MoneyTextBlock"  FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Button>
+
+
+            
+            
             <StackPanel Orientation="Horizontal" Grid.Column="4" HorizontalAlignment="Center">
                 <Button Background="{x:Null}" ToolTip="Close" x:Name="btnMessages" Click="btnMessages_Click" BorderBrush="{x:Null}" Height="Auto" >
                     <materialDesign:PackIcon  Kind="Email" Foreground="White" Width="23" Height="Auto"/>

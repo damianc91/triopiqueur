@@ -90,7 +90,7 @@ namespace WpfApp1
             }
         }
 
-        internal static string PageLogin()
+        internal static string PageLogin(string teamId = "")
         {
             var client = new RestClient("https://www.velo-manager.net/office/");
             var request = new RestRequest(Method.POST);
@@ -98,10 +98,25 @@ namespace WpfApp1
             {
                 request.AddCookie(cookie.Name, cookie.Value);  //this adds every cookie in the previous response.
             }
-            request.AddParameter("equipe", "team noob");
-            request.AddParameter("pass", "clioclio");
+
+
+            if (teamId == "")
+            {
+                request.AddParameter("equipe", "team noob");
+                request.AddParameter("pass", "clioclio");
+            }
+            else
+            {
+                request.AddParameter("teamid", teamId);
+            }
+
+
             IRestResponse response = client.Execute(request);
-            _cookies = response.Cookies;
+            if (_cookies.Count == 0)
+            {
+                _cookies = response.Cookies;
+            }
+
             return (response.Content);
         }
 

@@ -51,7 +51,7 @@ namespace WpfApp1
             if (!File.Exists("config.xml"))
             {
                 //File.Create("config.xml");
-                System.IO.File.WriteAllText("config.xml", "<root><currentTeam>1</currentTeam><teams></teams></root>");
+                System.IO.File.WriteAllText("config.xml", "<root><currentTeam><number>1</number><money></money><division></division></currentTeam><teams></teams></root>");
             }
             else
             {
@@ -62,7 +62,7 @@ namespace WpfApp1
                 XmlNode projectNode = documentXml.SelectSingleNode("//root/teams");
                 projectNode.RemoveAll();
 
-                XmlNode nodeCurrentTeam = documentXml.SelectSingleNode("//root/currentTeam");
+                XmlNode nodeCurrentTeam = documentXml.SelectSingleNode("//root/currentTeam/number");
                 nodeCurrentTeam.InnerText = "1";
                 documentXml.Save(configPath);
             }

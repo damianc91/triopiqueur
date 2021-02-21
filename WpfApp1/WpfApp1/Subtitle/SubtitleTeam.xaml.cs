@@ -107,7 +107,9 @@ namespace WpfApp1
 
         private void btnCoureurs_Click(object sender, RoutedEventArgs e)
         {
-            PageCoureurs p = new PageCoureurs("5514");//DEBUG!!! int.Parse(CommonLibrary.FindMyTeam())
+            var nb = -1 + int.Parse(Answers.GetCurrentChoicedTeam());
+            var id = Answers.GetAllTeamsOwned()[nb];
+            PageCoureurs p = new PageCoureurs(id);//DEBUG!!! int.Parse(CommonLibrary.FindMyTeam())
             Home objMainWindows = (Home)Window.GetWindow(this);
             objMainWindows.frameLeft.Navigate(p);
 

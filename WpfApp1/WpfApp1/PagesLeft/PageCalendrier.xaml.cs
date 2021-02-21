@@ -115,6 +115,7 @@ namespace WpfApp1.Pages
 
             try
             {
+                //var calendriers2 = calendriers.Where(c => c.date != calendriers.First().date).ToList<Calendrier>();
                 joursAvantSaison = (calendriers.Last().date - DateTime.Now).Days;
             }
             catch (Exception) 

@@ -69,6 +69,89 @@ namespace WpfApp1
             }
         }
 
+        public static void WriteCurrentTeamInXml(string text)
+        {
+            try
+            {
+                XmlDocument documentXml = new XmlDocument();
+                string configPath = "config.xml";
+                documentXml.Load(configPath);
+
+                XmlNode projectNode = documentXml.SelectSingleNode("//root/currentTeam/number");
+                projectNode.InnerText = text;
+
+                documentXml.Save(configPath);
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("money not found. Exception : " + ex.Message);
+            }
+        }
+
+        public static void WriteMoneyInXml(string text)
+        {
+            string money = "ERR DIV NOT FOUND";
+
+            try
+            {
+
+                HtmlDocument documenthtml = new HtmlDocument();
+                documenthtml.LoadHtml(text);
+                HtmlNodeCollection collection = documenthtml.DocumentNode.SelectNodes("//div[@id=\"h_finances\"]/div/small/span");
+
+                foreach (HtmlNode link in collection)
+                {
+                    money = link.InnerText.Trim();
+                }
+
+                XmlDocument documentXml = new XmlDocument();
+                string configPath = "config.xml";
+                documentXml.Load(configPath);
+
+                XmlNode projectNode = documentXml.SelectSingleNode("//root/currentTeam/money");
+                projectNode.InnerText = money;
+
+                documentXml.Save(configPath);
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("money not found. Exception : " + ex.Message);
+            }
+        }
+
+        public static void WriteDivisionInXml(string text)
+        {
+            string division = "ERR DIV NOT FOUND";
+
+            try
+            {
+                HtmlDocument documenthtml = new HtmlDocument();
+                documenthtml.LoadHtml(text);
+                HtmlNodeCollection collection = documenthtml.DocumentNode.SelectNodes("//div[@id=\"h_classements\"]/div/b");
+
+                foreach (HtmlNode link in collection)
+                {
+                    division = link.InnerText.Trim();
+                }
+
+                XmlDocument documentXml = new XmlDocument();
+                string configPath = "config.xml";
+                documentXml.Load(configPath);
+
+                XmlNode projectNode = documentXml.SelectSingleNode("//root/currentTeam/division");
+                projectNode.InnerText = division;
+
+                documentXml.Save(configPath);
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("division not found. Exception : " + ex.Message);
+            }
+        }
+
         public static List<string> GetAllTeamsOwned()
         {
             List<string> teamIds = new List<string>();
@@ -87,78 +170,81 @@ namespace WpfApp1
             return teamIds;
         }
 
-        public static void FindAndWriteMoney(string text)
+        public static List<string> GetAllTeamOwnedNames()
         {
-            string money = "ERR DIV NOT FOUND";
+            List<string> teamIds = new List<string>();
 
+            XmlDocument documentXml = new XmlDocument();
+            string configPath = "config.xml";
+            documentXml.Load(configPath);
+
+            XmlNodeList projectNode = documentXml.SelectNodes("//root/teams/team/name");
+
+            foreach (XmlNode item in projectNode)
+            {
+                teamIds.Add(item.InnerText);
+            }
+
+            return teamIds;
+        }
+
+        public static string GetCurrentChoicedTeam()
+        {
             try
             {
-
-                HtmlDocument documenthtml = new HtmlDocument();
-                documenthtml.LoadHtml(text);
-                HtmlNodeCollection collection = documenthtml.DocumentNode.SelectNodes("//div[@id=\"h_finances\"]/div/small/span");
-
-                foreach (HtmlNode link in collection)
-                {
-                    money = link.InnerText.Trim();
-                }
-
-                int currentTeam = GetCurrentChoicedTeam();
-
                 XmlDocument documentXml = new XmlDocument();
                 string configPath = "config.xml";
                 documentXml.Load(configPath);
-
-                XmlNode projectNode = documentXml.SelectSingleNode("//root/teams/team[" + (currentTeam) + "]");
-                XmlNode nodeMoney = documentXml.CreateNode(XmlNodeType.Element, "money", string.Empty);
-                nodeMoney.InnerText = money;
-                projectNode.AppendChild(nodeMoney);
-
-                documentXml.Save(configPath);
-
+                XmlNode nodeCurrentTeam = documentXml.SelectSingleNode("//root/currentTeam/number");
+                //return int.Parse(nodeCurrentTeam.InnerText);
+                return nodeCurrentTeam.InnerText;
             }
             catch (Exception ex)
             {
-                Log.Error("money not found. Exception : " + ex.Message);
+                Log.Error("config.xml is missing or corrupted. Read currentTeam failed. Relaunch \".exe\" to solve the issue. Exception : " + ex.Message);
+                //TO DO popup window error
+                return "error";
             }
         }
 
-        internal static void FindAndWriteDivision(string text)
+        public static string GetCurrentDivision()
         {
-            string division = "ERR DIV NOT FOUND";
-
             try
             {
-                HtmlDocument documenthtml = new HtmlDocument();
-                documenthtml.LoadHtml(text);
-                HtmlNodeCollection collection = documenthtml.DocumentNode.SelectNodes("//div[@id=\"h_classements\"]/div/b");
-
-                foreach (HtmlNode link in collection)
-                {
-                    division = link.InnerText.Trim();
-                }
-
-                int currentTeam = GetCurrentChoicedTeam();
-
                 XmlDocument documentXml = new XmlDocument();
                 string configPath = "config.xml";
                 documentXml.Load(configPath);
-
-                XmlNode projectNode = documentXml.SelectSingleNode("//root/teams/team[" + (currentTeam) + "]");
-                XmlNode nodeDivision = documentXml.CreateNode(XmlNodeType.Element, "division", string.Empty);
-                nodeDivision.InnerText = division;
-                projectNode.AppendChild(nodeDivision);
-
-                documentXml.Save(configPath);
-
+                XmlNode nodeCurrentDivision = documentXml.SelectSingleNode("//root/currentTeam/division");
+                return nodeCurrentDivision.InnerText;
             }
             catch (Exception ex)
             {
-                Log.Error("division not found. Exception : " + ex.Message);
+                Log.Error("config.xml is missing or corrupted. Read currentTeam failed. Relaunch \".exe\" to solve the issue. Exception : " + ex.Message);
+                //TO DO popup window error
+                return "error";
             }
         }
 
-        internal static int FindBlocNoteContent(string text)
+        public static string GetCurrentMoney()
+        {
+            try
+            {
+                XmlDocument documentXml = new XmlDocument();
+                string configPath = "config.xml";
+                documentXml.Load(configPath);
+                XmlNode nodeCurrentMoney = documentXml.SelectSingleNode("//root/currentTeam/money");
+                return nodeCurrentMoney.InnerText;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("config.xml is missing or corrupted. Read currentTeam failed. Relaunch \".exe\" to solve the issue. Exception : " + ex.Message);
+                //TO DO popup window error
+                return "error";
+            }
+        }
+
+
+        public static int FindBlocNoteContent(string text)
         {
             try
             {
@@ -176,23 +262,9 @@ namespace WpfApp1
             }
         }
 
-        private static int GetCurrentChoicedTeam()
-        {
-            try
-            {
-                XmlDocument documentXml = new XmlDocument();
-                string configPath = "config.xml";
-                documentXml.Load(configPath);
-                XmlNode nodeCurrentTeam = documentXml.SelectSingleNode("//root/currentTeam");
-                return int.Parse(nodeCurrentTeam.InnerText);
-            }
-            catch (Exception ex)
-            {
-                Log.Error("config.xml is missing or corrupted. Read currentTeam failed. Relaunch \".exe\" to solve the issue. Exception : " + ex.Message);
-                //TO DO popup window error
-                return -1;
-            }
-        }
+
+
+     
 
         internal static VMMagazine FindVMMagazineContent(string text)
         {

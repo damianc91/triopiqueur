@@ -55,8 +55,8 @@ namespace WpfApp1.Pages
             foreach (Transfert trans in allTransferts)
             {
                 //trans.potentielBaroudeur = CommonLibrary.FindPotentielPla(trans.age, trans.pla, trans.val, trans.end, trans.res);
-                trans.potentielGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindPotentielMon(trans.age, trans.pla, trans.mon, trans.des, trans.val, trans.end, trans.res));
-                trans.potentielVallon = CommonLibrary.FindStarsGrimp(CommonLibrary.FindPotentielVal(trans.age, trans.pla, trans.mon, trans.val, trans.end, trans.res));
+                trans.potentielGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindPotentielMon(trans.age, trans.pla, trans.mon, trans.des, trans.val, trans.end, trans.res, name:trans.nom, joursAvantSaison: PageCalendrier.joursAvantSaison));
+                trans.potentielVallon = CommonLibrary.FindStarsVal(CommonLibrary.FindPotentielVal(trans.age, trans.pla, trans.mon, trans.val, trans.end, trans.res, joursAvantSaison: PageCalendrier.joursAvantSaison));
                 //trans.potentielPave = CommonLibrary.FindPotentielPav(trans.age, trans.pla, trans.pav, trans.val, trans.end, trans.res);
                 //trans.potentielClm = CommonLibrary.FindPotentielClm(trans.age, trans.pla, trans.clm, trans.spr, trans.end, trans.res);
                 //trans.potentielAgilite = CommonLibrary.FindPotentielAgi(trans.age, trans.pla, trans.mon, trans.val, trans.agi, trans.end, trans.res);
@@ -96,7 +96,7 @@ namespace WpfApp1.Pages
 
                 //trans.niveauBaroudeur = CommonLibrary.FindLevelPla( trans.pla, trans.val, trans.end, trans.res);
                 trans.niveauGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindLevelMon( trans.pla, trans.mon, trans.des, trans.val, trans.end, trans.res));
-                trans.niveauVallon = CommonLibrary.FindStarsGrimp(CommonLibrary.FindLevelVal( trans.pla, trans.mon, trans.val, trans.end, trans.res));
+                trans.niveauVallon = CommonLibrary.FindStarsVal(CommonLibrary.FindLevelVal( trans.pla, trans.mon, trans.val, trans.end, trans.res));
                 //trans.niveauPave = CommonLibrary.FindLevelPav( trans.pla, trans.pav, trans.val, trans.end, trans.res);
                 //trans.niveauClm = CommonLibrary.FindLevelClm( trans.pla, trans.spr, trans.clm, trans.res);
                 //trans.niveauAgilite = CommonLibrary.FindLevelAgi(trans.pla, trans.val, trans.mon, trans.agi, trans.res);

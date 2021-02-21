@@ -21,6 +21,7 @@ namespace WpfApp1
         public const double AGE_SENIOR = 23;
         public const double REGRESSION_30 = 0.3;
         public const double REGRESSION_31 = 0.6;
+        public const double NB_TRAINING = 41;
         public static double minGrimp;
         public static double maxGrimp;
         public static double minVal;
@@ -53,10 +54,10 @@ namespace WpfApp1
 
         internal static void initializeLevelMaxMin()
         {
-            minGrimp = FindPotentielMon(age: "19", pla: "57.00", mon: "67.00", des: "57.00", val: "57.00", end: "61.00", res: "61.00");
-            maxGrimp = FindPotentielMon(age:"19", pla:"70.00", mon:"74.00", des:"70.00", val:"70.00", end:"70.00", res:"70.00");
-            minVal = FindPotentielVal(age:"19",  pla:"57.00",  mon:"57.00",  val:"67.00",  end:"61.00",  res:"61.00");
-            maxVal = FindPotentielVal(age: "19", pla: "70.00", mon: "70.00", val: "74.00", end: "70.00", res: "70.00");
+            minGrimp = FindPotentielMon(age: "19", pla: "56.88", mon: "66.88", des: "56.88", val: "56.88", end: "60.88", res: "60.88");
+            maxGrimp = FindPotentielMon(age:"19", pla:"69.88", mon:"74.28", des:"69.88", val:"69.88", end: "69.88", res: "69.88", name: "Dobromir");
+            minVal = FindPotentielVal(age:"19",  pla: "56.88",  mon: "56.88",  val:"66.88",  end: "60.88",  res: "60.88");
+            maxVal = FindPotentielVal(age: "19", pla: "69.88", mon: "69.88", val: "74.00", end: "69.88", res: "69.88");
         }
 
         internal static string FindMyTeam(string idEquipe)
@@ -126,7 +127,8 @@ namespace WpfApp1
             //Log.Debug("29 ans");
             //Log.Debug((100.0 - 0.69 - (0.69 * Math.Max(0, 31 - 29)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - 29, 0), 1))).ToString());
 
-            double limit2 = 100.0 - 0.69 - (0.69 * Math.Max(0, 31 - age)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - age, 0), 1));
+            double limit1 = -0.2 + 100.0 - 0.69 - (0.69 * Math.Max(0, 31 - age)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - age, 0), 1));
+            double limit2 = -0.2 + 100.0 - 0.43 - (0.43 * Math.Max(0, 31 - age)) + 0.6 + (0.3 * Math.Min(Math.Max(31 - age, 0), 1));
 
             if (type1 < 90.0)
             {
@@ -140,7 +142,7 @@ namespace WpfApp1
                 }
                 else
                 {
-                    if (type1 < limit2)
+                    if (type1 < limit1)
                     {
                         type1 = Formula(type1);
                     }
@@ -161,7 +163,7 @@ namespace WpfApp1
 
         static private double Formula(double niveau)
         {
-            var offset = ((-1) * (0.0006 * niveau) + 0.0975 + Bonus(niveau)) * 40 / 47;
+            var offset = Math.Ceiling(((-1.0) * (0.0006 * niveau) + 0.0975 + Bonus(niveau)) * NB_TRAINING / 47.0 * 100.0) / 100.0;
 
             return niveau + offset;
         }
@@ -557,7 +559,7 @@ namespace WpfApp1
             int tempAge = int.Parse(age);
 
 
-            for (int i = 0; i <= joursAvantSaison; i++)
+            for (int i = 0; i < joursAvantSaison; i++)
             {
                 Train_2_90(ref tempVal, ref tempEnd, ref tempRes, tempAge);
                 if (tempAge < AGE_SENIOR)
@@ -619,14 +621,10 @@ namespace WpfApp1
         private static double FormulaVal(double tempPla, double tempMon, double tempVal, double tempEnd, double tempRes)
         {
             var r = (15.0 * tempPla + 5.0 * tempMon + 45.0 * tempVal + 20.0 * tempEnd + 15.0 * tempRes) / 100.0;
-            if (r>100.0)
-            {
-                Log.Fatal("");
-            }
             return r;
         }
 
-        static internal double FindPotentielMon(string age, string pla, string mon, string des, string val, string end, string res, int joursAvantSaison = 47)
+        static internal double FindPotentielMon(string age, string pla, string mon, string des, string val, string end, string res, int joursAvantSaison = 47, string name="")
         {
             double tempPla = double.Parse(pla, CultureInfo.InvariantCulture);
             double tempVal = double.Parse(val, CultureInfo.InvariantCulture);
@@ -636,8 +634,13 @@ namespace WpfApp1
             double tempRes = double.Parse(res, CultureInfo.InvariantCulture);
             int tempAge = int.Parse(age);
 
+            if (name.Contains("Dobromir"))
+            {
+                //Log.Debug("");
+            }
 
-            for (int i = 0; i <= joursAvantSaison; i++)
+
+            for (int i = 0; i < joursAvantSaison; i++)
             {
                 Train_2_90(ref tempMon, ref tempRes, ref tempEnd, tempAge);
                 if (tempAge < AGE_SENIOR)
@@ -651,7 +654,11 @@ namespace WpfApp1
                 }
             }
 
-            Log.Debug("age " + (FormulaMon(tempPla, tempMon, tempDes, tempVal, tempEnd, tempRes)).ToString());
+            if (name.Contains("Dobromir"))
+            {
+                //Log.Debug("age " + (FormulaMon(tempPla, tempMon, tempDes, tempVal, tempEnd, tempRes)).ToString());
+            }
+
 
             while (tempAge < 31)
             {
@@ -697,8 +704,8 @@ namespace WpfApp1
                     }
                 }
             }
-
-            //Log.Information("Gr " + nom.ToString() + " " + ((10.0 * tempPla + 44.0 * tempMon + 6.0 * tempDes + 8.0 * tempVal + 14.0 * tempEnd + 18.0 * tempRes) / 100.0));
+            Log.Information("Gr " + name.ToString() + " tempPla " + tempPla.ToString("F2") + " tempMon " + tempMon.ToString("F2") + " tempDes " + tempDes.ToString("F2") + " tempVal " + tempVal.ToString("F2") + " tempEnd " + tempEnd.ToString("F2") + " tempRes  " + tempRes.ToString("F2"));
+            //Log.Information("Gr " + name.ToString() + " " + ((10.0 * tempPla + 44.0 * tempMon + 6.0 * tempDes + 8.0 * tempVal + 14.0 * tempEnd + 18.0 * tempRes) / 100.0));
 
             return FormulaMon(tempPla, tempMon, tempDes, tempVal, tempEnd, tempRes);
         }

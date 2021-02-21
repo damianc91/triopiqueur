@@ -56,20 +56,16 @@ namespace WpfApp1
         }
         private bool VerifyUser(string username, string password)
         {
-
-
             var response = Requests.PageLogin();
 
             if (! Answers.FindAllTeamsOwned(response))
             {
                 return false;
             }
-            Answers.FindAndWriteMoney(response);
-            Answers.FindAndWriteDivision(response);
+            
+            Answers.WriteMoneyInXml(response);
+            Answers.WriteDivisionInXml(response);
 
-            ///////////////////
-
-            ///////////////////////////////
 
             return true;
         }

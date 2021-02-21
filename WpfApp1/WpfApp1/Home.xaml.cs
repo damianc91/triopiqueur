@@ -39,7 +39,29 @@ namespace WpfApp1
             PageCalendrier p2 = new PageCalendrier();
             frameRight.Navigate(p2);
 
-            PageCoureurs p3 = new PageCoureurs("5514");
+
+            Team1NameTextBlock.Text = Answers.GetAllTeamOwnedNames()[0];
+            Team2NameTextBlock.Text = Answers.GetAllTeamOwnedNames()[1];
+            Team3NameTextBlock.Text = Answers.GetAllTeamOwnedNames()[2];
+            switch (Answers.GetCurrentChoicedTeam())
+            {
+                case "1":
+                    Team1MoneyTextBlock.Text = "D" + Answers.GetCurrentDivision() + ", " + Answers.GetCurrentMoney();
+                    ChangeColorButton(1);
+                    break;
+                case "2":
+                    Team2MoneyTextBlock.Text = "D" + Answers.GetCurrentDivision() + ", " + Answers.GetCurrentMoney();
+                    ChangeColorButton(2);
+                    break;
+                default:
+                    Team3MoneyTextBlock.Text = "D" + Answers.GetCurrentDivision() + ", " + Answers.GetCurrentMoney();
+                    ChangeColorButton(3);
+                    break;
+            }
+            
+            var nb = -1 + int.Parse(Answers.GetCurrentChoicedTeam());
+            var id = Answers.GetAllTeamsOwned()[nb];
+            PageCoureurs p3 = new PageCoureurs(id);
             frameLeft.Navigate(p3);
 
             //DispatcherTimer LiveTime = new DispatcherTimer();
@@ -166,23 +188,63 @@ namespace WpfApp1
 
         private void btnTeam1Choice_Click(object sender, RoutedEventArgs e)
         {
-            ResetTeamChoice();
-            var color = (Brush)bc.ConvertFrom("#FFCC951F");
-            btnTeam1Choice.Background = color;
+            ChangeColorButton(1);
+
+            UpdateXmlForCurrentTeam("1");
+        }
+
+        private void UpdateXmlForCurrentTeam(string number)
+        {
+            var idTeam = Answers.GetAllTeamsOwned()[int.Parse(number) - 1];
+            var response = Requests.PageLogin(idTeam);
+            Answers.WriteCurrentTeamInXml(number);
+            Answers.WriteMoneyInXml(response);
+            Answers.WriteDivisionInXml(response);
+
+            Team1MoneyTextBlock.Text = "";
+            Team2MoneyTextBlock.Text = "";
+            Team3MoneyTextBlock.Text = "";
+
+            Home subWindow = new Home();
+            subWindow.Show();
+            this.Close();
         }
 
         private void btnTeam2Choice_Click(object sender, RoutedEventArgs e)
         {
-            ResetTeamChoice();
-            var color = (Brush)bc.ConvertFrom("#FFCC951F");
-            btnTeam2Choice.Background = color;
+            ChangeColorButton(2);
+
+            UpdateXmlForCurrentTeam("2");
         }
 
         private void btnTeam3Choice_Click(object sender, RoutedEventArgs e)
         {
+            ChangeColorButton(3);
+
+            UpdateXmlForCurrentTeam("3");
+        }
+
+        private void ChangeColorButton(int v)
+        {
             ResetTeamChoice();
-            var color = (Brush)bc.ConvertFrom("#FFCC951F");
-            btnTeam3Choice.Background = color;
+
+            switch (v)
+            {
+                case 1:
+                    var color = (Brush)bc.ConvertFrom("#FFCC951F");
+                    btnTeam1Choice.Background = color;
+                    break;
+                case 2:
+                    var color2 = (Brush)bc.ConvertFrom("#FFCC951F");
+                    btnTeam2Choice.Background = color2;
+                    break;
+                case 3:
+                    var color3 = (Brush)bc.ConvertFrom("#FFCC951F");
+                    btnTeam3Choice.Background = color3;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void ResetTeamChoice()

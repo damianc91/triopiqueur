@@ -1,19 +1,9 @@
 <root>
-  <currentTeam>1</currentTeam>
+  <currentTeam>
+    <number>1</number>
+    <money>+19 127 921 €</money>
+    <division>5m</division>
+  </currentTeam>
   <teams>
-    <team>
-      <name>team noob</name>
-      <id>5514</id>
-      <money>+16 982 383 €</money>
-      <division>1</division>
-    </team>
-    <team>
-      <name>team noob (2)</name>
-      <id>1948</id>
-    </team>
-    <team>
-      <name>team noob (3)</name>
-      <id>2791</id>
-    </team>
   </teams>
 </root>

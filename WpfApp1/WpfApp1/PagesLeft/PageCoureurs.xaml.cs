@@ -51,7 +51,7 @@ namespace WpfApp1.Pages
                 //item.potentielClm = CommonLibrary.FindPotentielClm(item.age, item.pla, item.clm, item.spr, item.end, item.res);
                 //item.potentielAgilite = CommonLibrary.FindPotentielAgi(item.age, item.pla, item.mon, item.val, item.agi, item.end, item.res);
                 //item.potentielSpr = CommonLibrary.FindPotentielSpr(item.age, item.pla, item.val, item.spr, item.end, item.res);
-                item.potentielGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindPotentielMon(item.age, item.pla, item.mon, item.des, item.val, item.end, item.res, joursAvantSaison: PageCalendrier.joursAvantSaison));
+                item.potentielGrimpeur = CommonLibrary.FindStarsGrimp(CommonLibrary.FindPotentielMon(item.age, item.pla, item.mon, item.des, item.val, item.end, item.res, joursAvantSaison: PageCalendrier.joursAvantSaison, name:item.nom));
                 item.potentielVallon = CommonLibrary.FindStarsVal(CommonLibrary.FindPotentielVal(item.age, item.pla, item.mon, item.val, item.end, item.res, joursAvantSaison:PageCalendrier.joursAvantSaison));
                 item.potentielMax = CommonLibrary.FindPotentielMax(item.potentielBaroudeur, item.potentielGrimpeur, item.potentielVallon, item.potentielPave, item.potentielAgilite, item.potentielClm, item.potentielSpr);
                 item.potentielMaxString = item.potentielMax.ToString();
